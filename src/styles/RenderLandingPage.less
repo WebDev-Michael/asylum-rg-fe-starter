@@ -41,56 +41,56 @@
     font-size: 1.2rem;
 }
 
-// graphs section
-.graphs-section .row {
-    display: flex;
+// Graphs styling
+
+.graphs-section {
+ display: flex;
+ justify-content: space-evenly;
+}
+
+.grant-rates-by-office-graph-container, .grant-rates-over-time-container  {
     text-align: center;
-    font-weight: 600;
-    justify-content: space-around;
-    align-items:last baseline;
-    font-family: 'beatrice regular';
-    font-size: 25px;
+    height: 165px;
+    font-size: 1.5rem;
+    font-family: 'acumin';
 }
 
-.graphs-section img {
-    width: 60%;
-    box-shadow: 5px 5px 5px gray;
-    border-radius: 15px;
+.gr-office-img, .gr-overtime-img {
+    height: 165px;
+    width: 320px;
+    margin-bottom: 10%;
+    cursor: pointer;
 }
 
-.graphs-section img:hover {
-    box-shadow: 10px 10px 10px gray;
+.grant-rates-by-nationality-container {
+    text-align: center;
+    margin-bottom: 3%;
+    margin-left: -15px;
+    font-size: 1.5rem;
+    font-family: 'acumin';
 }
 
-.img-2 {
-    margin-bottom: 30px;
-    padding: 55px 40px;    
+.gr-nationality-img {
+    margin-bottom: 7%;
+    margin-left: -15px;
+    height: 175px;
+    width: 200px;
+    cursor: pointer;
 }
-
-.graphs-section p {
-    padding-top: 10px;
-    font-size: 20px;
-}
-
-
 
 .view-more-data-btn-container {
-    display: flex;
+    height: 44px;
+    width: 180px;
+    margin: 0 auto;
     text-align: center;
-    justify-content: center;
-    margin-bottom: 5rem;
-}
-
-.view-more-data-btn-container .BtnViewMoreData {
-    margin-right: 25px;
+    margin-bottom: 10%;
 }
 
 .middle-section {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    margin-bottom: 3.5rem
-    
+    height: fit-content;
 }
 
 .hrf-img {
@@ -106,42 +106,43 @@
 
 .middle-section-text-container h3 {
     font-family: 'acumin';
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
-// Bottom section 
-.bottom-section-container .system-text{
-    font-family: 'beatrice regular';
-    font-size: 3rem;
+// Bottom Section
+
+.bottom-section {
     text-align: center;
-    margin-top: 3.5rem
-    
+    margin-top: 10%;
 }
 
-.bottom-section-container .systemBtn{
-    margin-top: 3rem;
-    display: block;
-    margin: auto;
+.bottom-section h1 {
+    margin-bottom: 10%;
+    font-size: 3.5rem;
+    font-family: 'moneta';
 }
 
-.bottom-section-container h2 {
-    font-family: 'beatrice regular';
-    font-weight: 600;
-}
-.system-text-container{
+.data-container {
     display: flex;
-    text-align: center;
     justify-content: space-evenly;
-    padding: .5rem;
+    margin-bottom: 5%;
 }
 
-.system-text-container .text{
-    font-family: 'beatrice regular';
-    font-size: 22px;
-    font-weight: 600;
+.first-data-point-container, .second-data-point-container, .third-data-point-container {
+    width: 433px;
 }
 
+.first-data-point-container h2, .second-data-point-container h2, .third-data-point-container h2 {
+    font-family: "beatrice_regular";
+    font-size: 3rem;
+    font-weight: 500;
+}
 
+.first-data-point-container h3, .second-data-point-container h3, .third-data-point-container h3 {
+    font-family: 'acumin';
+    font-size: 1.4rem;
+    font-weight: 500;
+}
 
 .back-to-top {
     width: 8%;
@@ -223,6 +224,7 @@
         background-color: @secondary-color;
         padding-top: 15%;
         text-align: center;
+        height: fit-content;
     }
 
     .hrf-img {
@@ -335,7 +337,7 @@
         background-color: @secondary-color;
         padding-top: 5%;
         text-align: center;
-        
+        height: fit-content;
     }
 
     .hrf-img {
@@ -449,6 +451,7 @@
         background-color: @secondary-color;
         padding-top: 5%;
         text-align: center;
+        height: fit-content;
     }
 
     .hrf-img {
@@ -563,6 +566,7 @@
         background-color: @secondary-color;
         padding-top: 10%;
         text-align: center;
+        height: fit-content;
     }
 
     .hrf-img {
@@ -705,6 +709,7 @@
         background-color: @secondary-color;
         padding-top: 10%;
         text-align: center;
+        height: fit-content;
     }
 
     .hrf-img {

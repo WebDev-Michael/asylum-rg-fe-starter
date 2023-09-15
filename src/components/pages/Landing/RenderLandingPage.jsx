@@ -1,5 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 import React from 'react';
 // ADD IMPORTS BACK FOR GRAPHS SECTION
 import GrantRatesByOfficeImg from '../../../styles/Images/bar-graph-no-text.png';
@@ -10,7 +8,7 @@ import '../../../styles/RenderLandingPage.less';
 import { Button } from 'antd';
 import { useHistory } from 'react-router-dom';
 // for the purposes of testing PageNav
-//di import PageNav from '../../common/PageNav';
+// import PageNav from '../../common/PageNav';
 
 function RenderLandingPage(props) {
   const scrollToTop = () => {
@@ -20,65 +18,59 @@ function RenderLandingPage(props) {
 
   const history = useHistory();
 
-  const style = { backgroundColor: '#404C4A', color: '#FFFFFF' };
-
   return (
     <div className="main">
       <div className="header">
         <div className="header-text-container">
-        <h1>Asylum Office Grant Rate Tracker</h1>
-        <h3>
-          The Asylum Office Grant Rate Tracker provides asylum seekers,
-          researchers, policymakers, and the public an interactive tool to
-          explore USCIS data on Asylum Office decisions
-        </h3>
-      </div>
-    </div>
-
-      {/* Graphs Section: Add code here for the graphs section for your first ticket */}
-
-      <div className="graphs-section">
-        <div className="row">
-          <div className="col-md-3 img-1">
-            <a href="http://localhost:3000/graphs/all/office-heat-map">
-              <img src={GrantRatesByOfficeImg} alt="graph-by-office" />
-            </a>
-            <p>Grant Rates By Office</p>
-          </div>
-
-          <div className="col-md-3 img-2">
-            <a href='http://localhost:3000/graphs/all/citizenship'>
-            <img src={GrantRatesByNationalityImg} alt="graph-by-nationality" /></a>
-            <p>Grant Rates By Nationality</p>
-          </div>
-
-          <div className="col-md-3 img-3">
-            <a href='http://localhost:3000/graphs/all/time-series'>
-            <img src={GrantRatesOverTimeImg} alt="graph-over-time" /></a>
-            <p>Grant Rates Over Time</p>
-          </div>
+          <h1>Asylum Office Grant Rate Tracker</h1>
+          <h3>
+            The Asylum Office Grant Rate Tracker provides asylum seekers,
+            researchers, policymakers, and the public an interactive tool to
+            explore USCIS data on Asylum Office decisions
+          </h3>
         </div>
       </div>
 
-      {/*  View More and Download Buttons */}
+      {/* Graphs Section: Add code here for the graphs section for your first ticket */}
+      <div className="graphs-section">
+        <div className="grant-rates-by-office-graph-container">
+          <img
+            src={GrantRatesByOfficeImg}
+            alt="Grant Rates by Office"
+            className="gr-office-img"
+            onClick={() => history.push('/graphs')}
+          ></img>
+          <p>Search Grant Rates By Office</p>
+        </div>
+
+        <div className="grant-rates-by-nationality-container">
+          <img
+            src={GrantRatesByNationalityImg}
+            alt="Grant Rates by Nationality"
+            className="gr-nationality-img"
+            onClick={() => history.push('/graphs/all/citizenship')}
+          ></img>
+          <p>Search Grant Rates By Nationality</p>
+        </div>
+
+        <div className="grant-rates-over-time-container">
+          <img
+            src={GrantRatesOverTimeImg}
+            alt="Grant Rates Over Time"
+            className="gr-overtime-img"
+            onClick={() => history.push('/graphs/all/time-series')}
+          ></img>
+          <p>Search Grant Rates Over Time</p>
+        </div>
+      </div>
 
       <div className="view-more-data-btn-container">
         <Button
-          className="BtnViewMoreData"
           type="default"
-          style={style}
+          style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
           onClick={() => history.push('/graphs')}
         >
           View the Data
-        </Button>
-
-        <Button
-          className="BtnDownloadData"
-          type="default"
-          style={style}
-          onClick={() => history.push('/graphs')}
-        >
-          Download the Data
         </Button>
       </div>
 
@@ -98,54 +90,52 @@ function RenderLandingPage(props) {
           </h3>
         </div>
       </div>
-     
-        {/* <div className="bottom-section">*/} 
-      <div>
-        <div className="bottom-section-container">
-          <h1 className="system-text">Systemic Disparity Insights</h1>
 
-          <div className="system-text-container">
-            <div>
-              <h2>36%</h2>
-              <p className="text">
-                By the end of the Trump administration, the average
-                <br />
-                asylum office grant rate had fallen 36 percent from an
-                <br />
-                average of 44 percent in fiscal year 2016 to 28 percent
-                <br /> in fiscal year 2020.
-              </p>
-            </div>
+      {/* Bottom Section: Add code here for the graphs section for your first ticket */}
 
-            <div>
-              <h2>5%</h2>
-              <p className="text">
-                The New Yor asylum office grant rate dropped to 5<br />
-                percent in fiscal year 2020.
-              </p>
-            </div>
-
-            <div>
-              <h2>6x Lower</h2>
-              <p className="text">
-                Between fiscal year 2017 and 2020, the New York
-                <br />
-                asylum office's average grant was six times lower
-                <br />
-                than the San Francisco asylum office.
-              </p>
-            </div>
+      <div className="bottom-section">
+        <h1 className="bottom-section">Systemic Disparity Insights</h1>
+        <div className="data-container">
+          <div className="first-data-point-container">
+            <h2>36%</h2>
+            <h3>
+              By the end of the Trump administration, the average asylum office
+              grant rate had fallen 36 percent from an average of 44 percent in
+              fiscal year 2016 to 28 percent in fiscal year 2020.
+            </h3>
           </div>
-          <div>
-            <button
-              className="systemBtn"
-              type="default"
-              style={style}
-            >
-              Read More
-            </button>
+          <div className="second-data-point-container">
+            <h2>5%</h2>
+            <h3>
+              The New York asylum office grant rate dropped to 5 percent in
+              fiscal year 2020.
+            </h3>
+          </div>
+          <div className="third-data-point-container">
+            <h2>6x Lower</h2>
+            <h3>
+              Between fiscal year 2017 and 2020, the New York asylum office’s
+              average grant rate was six times lower than the San Francisco
+              asylum office.
+            </h3>
           </div>
         </div>
+        <a
+          href="https://humanrightsfirst.org/library/uscis-records-reveal-systemic-disparities-in-asylum-decisions/"
+          target="_blank"
+          rel="noreferrer"
+          className="read-more-btn"
+        >
+          <div className="read-more-btn bottom-section">
+            <Button
+              type="default"
+              className="ant-btn ant-btn-default"
+              style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
+            >
+              <span>Read More</span>
+            </Button>
+          </div>
+        </a>
 
         <p onClick={() => scrollToTop()} className="back-to-top">
           Back To Top ^
