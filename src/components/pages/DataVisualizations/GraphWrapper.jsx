@@ -72,40 +72,54 @@ function GraphWrapper(props) {
                                    -- Mack 
     
     */
-
-    if (office === 'all' || !office) {
-      axios
-        .get(process.env.REACT_APP_API_URI, {
-          // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
+          const URL = 'https://hrf-asylum-be-b.herokuapp.com/cases'
+    if (office === 'all' || !office) { 
+      Promise.all([
+        axios
+        .get(`${URL}/fiscalSummary`, {
           params: {
             from: years[0],
             to: years[1],
           },
-        })
-        .then(result => {
-          stateSettingCallback(view, office, test_data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
-        })
-        .catch(err => {
-          console.error(err);
-        });
-    } else {
-      axios
-        .get(process.env.REACT_APP_API_URI, {
-          // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
+        }),
+
+        axios
+        .get(`${URL}/citizenshipSummary`, {
           params: {
             from: years[0],
             to: years[1],
             office: office,
           },
         })
-        .then(result => {
-          stateSettingCallback(view, office, test_data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
+      ])
+        .then(([callA, callB]) => {
+          const dataA = callA.data;
+          const dataB = callB.data;
+
+          const combinedData = {
+            fiscalSummary: [dataA],
+            citizenshipSummary: [dataB]
+          }
+          console.log('this is combinedData:', combinedData)
+          
+          // stateSettingCallback(view, office, combinedData);
         })
         .catch(err => {
           console.error(err);
         });
-    }
+
+
+    // } else {
+     
+    //     .then(result => {
+    //       stateSettingCallback(view, office, [result.data]); // <-- `test_data` here can be simply replaced by `result.data` in prod!
+    //     })
+    //     .catch(err => {
+    //       console.error(err);
+    //     });
+    // }
   }
+}
   const clearQuery = (view, office) => {
     dispatch(resetVisualizationQuery(view, office));
   };
