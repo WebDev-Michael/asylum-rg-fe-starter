@@ -50,74 +50,52 @@ function GraphWrapper(props) {
         break;
     }
   }
-  function updateStateWithNewData(years, view, office, stateSettingCallback) {
-    /*
-          _                                                                             _
-        |                                                                                 |
-        |   Example request for once the `/summary` endpoint is up and running:           |
-        |                                                                                 |
-        |     `${url}/summary?to=2022&from=2015&office=ZLA`                               |
-        |                                                                                 |
-        |     so in axios we will say:                                                    |
-        |                                                                                 |     
-        |       axios.get(`${url}/summary`, {                                             |
-        |         params: {                                                               |
-        |           from: <year_start>,                                                   |
-        |           to: <year_end>,                                                       |
-        |           office: <office>,       [ <-- this one is optional! when    ]         |
-        |         },                        [ querying by `all offices` there's ]         |
-        |       })                          [ no `office` param in the query    ]         |
-        |                                                                                 |
-          _                                                                             _
-                                   -- Mack 
-    
-    */
-          const URL = 'https://hrf-asylum-be-b.herokuapp.com/cases'
-    if (office === 'all' || !office) { 
-      Promise.all([
-        axios
-        .get(`${URL}/fiscalSummary`, {
-          params: {
-            from: years[0],
-            to: years[1],
-          },
-        }),
-
-        axios
-        .get(`${URL}/citizenshipSummary`, {
-          params: {
-            from: years[0],
-            to: years[1],
-            office: office,
-          },
-        })
-      ])
-        .then(([callA, callB]) => {
-          const dataA = callA.data;
-          const dataB = callB.data;
-
-          const combinedData = {
-            fiscalSummary: [dataA],
-            citizenshipSummary: [dataB]
-          }
-          console.log('this is combinedData:', combinedData)
-          
-          // stateSettingCallback(view, office, combinedData);
-        })
-        .catch(err => {
-          console.error(err);
-        });
 
 
-    // } else {
-     
-    //     .then(result => {
-    //       stateSettingCallback(view, office, [result.data]); // <-- `test_data` here can be simply replaced by `result.data` in prod!
-    //     })
-    //     .catch(err => {
-    //       console.error(err);
-    //     });
-    // }
+async function updateStateWithNewData(years, view, office, stateSettingCallback) {
+
+  const URL = "https://hrf-asylum-be-b.herokuapp.com/cases";
+
+  if (office === 'all' || !office) {
+
+    // Using Promise.all to make multiple asynchronous API requests concurrently.
+    Promise.all([
+
+      // Making an Axios GET request to the "fiscalSummary" endpoint of the API.
+      await axios.get(`${URL}/fiscalSummary`, {
+
+        // Passing parameters to the API request to filter data by year.
+        params: {
+          from: years[0],
+          to: years[1],
+        },
+      }),
+
+      await axios.get(`${URL}/citizenshipSummary`, {
+        params: {
+          from: years[0],
+          to: years[1],
+          office: office,
+        },
+      })
+
+    ])
+    .then(([callA, callB])=> {
+
+      // Extracting data from the response of the first API request.
+      const yearResults = callA.data.yearResults;
+
+      // Extracting data from the response of the second API request.
+      const citizenshipResults = callB.data;
+
+      // Combining the extracted data into an array of objects.
+      const combinedData = [{yearResults, citizenshipResults}];
+
+      stateSettingCallback(view, office, [combinedData][0]);
+    })
+    .catch(err => {
+      console.error(err);
+    });
   }
 }
   const clearQuery = (view, office) => {
