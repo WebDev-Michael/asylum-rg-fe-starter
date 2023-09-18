@@ -34,8 +34,8 @@ ReactDOM.render(
     <Provider store={store}>
 
     <Auth0Provider
-    domain="dev-g7335lkhotnul8f8.us.auth0.com"
-    clientId="A9hOg2Y6hthDxe7bmCBRljNRiKYuHAYT"
+    domain={`${process.env.REACT_APP_DOMAIN}`}
+    clientId={`${process.env.REACT_APP_CLIENT_ID}`}
     authorizationParams={{
       redirect_uri: window.location.origin
     }}>
