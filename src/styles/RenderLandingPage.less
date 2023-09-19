@@ -27,6 +27,63 @@
     height: fit-content;
 }
 
+#home-btn, #graphs-btn, #profile-btn {
+    margin: 0 10px 0 10px;
+    padding: 5px;
+    border-radius: 10px;
+    border: solid black 2px;
+    background: white;
+    color: black;
+    box-shadow: 5px 5px 10px black;
+    transition: all .2s ease-in-out;
+}
+
+#home-btn:hover, #graphs-btn:hover, #profile-btn:hover {
+    box-shadow: 7px 7px 10px darkcyan;
+    background-color: lightblue;
+    transform: scale(1.2);
+}
+
+.login-btn, .logout-btn {
+    margin: 0 10px 0 10px;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px black;
+    transition: all .2s ease-in-out;
+}
+
+.login-btn:hover, .logout-btn:hover {
+    box-shadow: 7px 7px 10px darkcyan;
+    background-color: lightblue;
+    transform: scale(1.2);
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-card img {
+    margin-top: 10px;
+    height: 200px;
+    width: 200px;
+    border: solid black 3px;
+    border-radius: 50%;
+    box-shadow: 10px 10px 15px darkslategrey;
+    margin-bottom: 10px;
+}
+
+.profile-card h2 {
+    font-family: 'beatrice regular';
+    font-size: 1.5rem;
+}
+.profile-card p {
+    font-family: 'beatrice regular';
+    font-size: 1.2rem;
+}
+
 .header-text-container {
     text-align: center;
     width: 100%;
@@ -64,6 +121,19 @@
     width: 320px;
     margin-bottom: 10%;
     cursor: pointer;
+    border: solid black 2px;
+    border-radius: 10px;
+    box-shadow: 5px 7px 5px darkslategray;
+}
+
+.gr-office-img:hover{
+    transition: all .2s ease-in-out;
+    transform: scale(1.2);
+} 
+
+.gr-overtime-img:hover {
+    transition: all .2s ease-in-out;
+    transform: scale(1.2);
 }
 
 .grant-rates-by-nationality-container {
@@ -80,6 +150,13 @@
     height: 175px;
     width: 200px;
     cursor: pointer;
+    border-radius: 10px;
+    border: solid black 2px;
+    box-shadow: 5px 7px 5px darkslategray;
+}
+.gr-nationality-img:hover {
+    transition: all .2s ease-in-out;
+    transform: scale(1.2);
 }
 
 .view-more-data-btn-container {
@@ -88,6 +165,17 @@
     margin: 0 auto;
     text-align: center;
     margin-bottom: 10%;
+}
+
+#view-more-btn, #download-btn, #read-more-btn {
+    margin-bottom: 10px;
+    background: #2c4848;
+    color: white;
+}
+
+#view-more-btn:hover, #download-btn:hover, #read-more-btn:hover {
+    transition: all .2s ease-in-out;
+    transform: scale(1.2);
 }
 
 .middle-section {
@@ -161,10 +249,6 @@
         display: flex;
         flex-wrap: wrap;
     }
-}
-
-.ant-btn:hover {
-    border-color: @secondary-color  !important;
 }
 
 @media @mobile-small {

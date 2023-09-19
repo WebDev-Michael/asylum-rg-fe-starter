@@ -10,7 +10,7 @@ const Profile = () => {
         // In this return the user information is dispalyed on the screen with a picture if available
     return (
     isAuthenticated && (
-        <div>
+        <div className="profile-card">
         <img src={user.picture} alt={user.name} />
         <h2>{user.name}</h2>
         <p>{user.email}</p>

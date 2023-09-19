@@ -67,14 +67,13 @@ function RenderLandingPage(props) {
 
   const history = useHistory();
   const { isAuthenticated } = useAuth0();
-  const style = { backgroundColor: '#404C4A', color: '#FFFFFF' };
 
   return (
     <div className="main">
       <div className="header">
         <div className="header-text-container">
-            <LoginButton /> 
-            <LogoutButton />
+            <LoginButton/>
+            <LogoutButton/>
           <h1>Asylum Office Grant Rate Tracker</h1>
           <h3>
             The Asylum Office Grant Rate Tracker provides asylum seekers,
@@ -119,18 +118,17 @@ function RenderLandingPage(props) {
 
       <div className="view-more-data-btn-container">
         <Button
+          id="view-more-btn"
           type="default"
-          style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
           onClick={() => history.push('/graphs')}
         >
           View the Data
         </Button>
         {/* Shows download button only when logged in */}
        { isAuthenticated && <Button
-          id='download-button'
+          id='download-btn'
           className="BtnDownloadData"
           type="default"
-          style={style}
           onClick={handleDownload}
         >
           Download the Data
@@ -183,22 +181,14 @@ function RenderLandingPage(props) {
             </h3>
           </div>
         </div>
-        <a
-          href="https://humanrightsfirst.org/library/uscis-records-reveal-systemic-disparities-in-asylum-decisions/"
-          target="_blank"
-          rel="noreferrer"
-          className="read-more-btn"
-        >
-          <div className="read-more-btn bottom-section">
-            <Button
-              type="default"
-              className="ant-btn ant-btn-default"
-              style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
-            >
-              <span>Read More</span>
-            </Button>
-          </div>
-        </a>
+        
+        <Button
+          id="read-more-btn"
+          type="default">
+            <a href="https://humanrightsfirst.org/library/uscis-records-reveal-systemic-disparities-in-asylum-decisions/">
+              Read More
+            </a>            
+        </Button>
 
         <p onClick={() => scrollToTop()} className="back-to-top">
           Back To Top ^
