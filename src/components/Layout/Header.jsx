@@ -12,11 +12,13 @@ function HeaderContent() {
   const { isAuthenticated } = useAuth0();
 
   return (
-    <div
+    <div className="hrf-header"
       style={{
         display: 'flex',
+        flexWrap: 'wrap',
         justifyContent: 'space-between',
-        width: '100%',
+        height: '20vh',
+        width: '100vw',
         backgroundColor: primary_accent_color,
       }}
     >
@@ -25,7 +27,7 @@ function HeaderContent() {
           <Image width={100} src={Logo} preview={false} alt="HRF logo white" />
         </a>
       </div>
-      <div>
+      <div className="links">
         <Link id="home-btn" to="/">
           Home
         </Link>

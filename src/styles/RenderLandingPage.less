@@ -1,26 +1,33 @@
 @main-color: #404C4A;
 @secondary-color: #707070;
 @white: #FFFFFF;
-@mobile-small: ~"(min-width: 320px) and (max-width: 375px)";
+@mobile-small: ~"(min-width: 280px) and (max-width: 375px)";
 @mobile-medium: ~"(min-width: 376px) and (max-width: 414px)";
 @mobile-large: ~"(min-width: 415px) and (max-width: 480px)";
 @tablet-small: ~"(min-width: 481px) and (max-width: 768px)";
 @tablet-large: ~"(min-width: 769px) and (max-width: 1024px)";
 @laptop: ~"(min-width: 1025px) and (max-width: 1280px)";
 
+.ant-layout-header{
+    height: 20vh !important;
+}
+
 .header {
     background-color: @main-color;
-    display:flex;
+    display: flex;
     text-align: center;
     width: 100%;
-    height: 20vh;
+    height: fit-content;
     margin-bottom: 10%;
 }
 
 .hrf-logo-img-container img {
-    height: 64px;
+    height: fit-content;
     width: 98px;
-    margin-left: 15%;
+}
+
+.hrf-logo{
+    margin: auto;
 }
 
 .header{
@@ -28,7 +35,7 @@
 }
 
 #home-btn, #graphs-btn, #profile-btn {
-    margin: 0 10px 0 10px;
+    margin: auto 5px;
     padding: 5px;
     border-radius: 10px;
     border: solid black 2px;
@@ -45,8 +52,9 @@
 }
 
 .login-btn, .logout-btn {
-    margin: 0 10px 0 10px;
+    margin: 10px 10px 0 10px;
     padding: 5px;
+    border: solid black 2px;
     border-radius: 10px;
     box-shadow: 5px 5px 10px black;
     transition: all .2s ease-in-out;
@@ -139,14 +147,13 @@
 .grant-rates-by-nationality-container {
     text-align: center;
     margin-bottom: 3%;
-    margin-left: -15px;
+    margin: auto;
     font-size: 1.5rem;
     font-family: 'acumin';
 }
 
 .gr-nationality-img {
     margin-bottom: 7%;
-    margin-left: -15px;
     height: 175px;
     width: 200px;
     cursor: pointer;
@@ -160,7 +167,7 @@
 }
 
 .view-more-data-btn-container {
-    height: 44px;
+    height: fit-content;
     width: 180px;
     margin: 0 auto;
     text-align: center;
@@ -252,27 +259,24 @@
 }
 
 @media @mobile-small {
+
     .header {
-        height: 30vh;
-       display: block;
-       position: relative;
+        height: fit-content;
+        display: block;
+        position: relative;
     }
     .hrf-logo-img-container{
-       height:fit-content;
+       height: fit-content;
        position: absolute;
        top: 0;
        left: 0;
-       margin: 2% 2%;
+       margin: auto;
     }
 
     .hrf-logo-img-container img {
-        height: 30px;
-        width: 48px;
-       
-    }
-
-    .header{
         height: fit-content;
+        width: fit-content;
+       
     }
    
     .header-text-container h1 {
@@ -300,8 +304,10 @@
         margin-bottom: 40%;
     }
 
-    .gr-nationality-img {
+    .gr-nationality-img, .gr-office-img, .gr-overtime-img {
         margin-bottom: 8%;
+        max-width: 200px;
+        height: fit-content;
     }
 
     .grant-rates-over-time-container {
@@ -312,7 +318,7 @@
         display: flex;
         flex-wrap: wrap;
         width: 100%;
-        height: 75vh;
+        height: fit-content;
         background-color: @secondary-color;
         padding-top: 15%;
         text-align: center;
@@ -321,7 +327,7 @@
 
     .hrf-img {
         height: 169px;
-        width: 324px;
+        width: fit-content;
     }
 
     .middle-section-text-container {
